@@ -4,11 +4,15 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 
 const Shops = ({getShopsWithProducts, data}) => {
-    const listItems = data.map((shop) =>
-        <li key={shop._id}>
-            {shop.name}
-        </li>
-    );
+    let listItems = null
+    if (data){
+        listItems = data.map((shop) =>
+            <li key={shop._id}>
+                {shop.name}
+            </li>
+        );
+    }
+
     useEffect( () => {
         getShopsWithProducts()
     }, []);
