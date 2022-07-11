@@ -5,7 +5,7 @@ import {API} from  "../../api/shopsAPI"
 const SET_SHOPS_WITH_PRODUCTS = "shopsReducer/SET_SHOPS_WITH_PRODUCTS"
 
 let initialState = {
-    data: null
+    ShopsList: null
 };
 
 const shopsReducer = (state = initialState, action) => {
@@ -13,7 +13,7 @@ const shopsReducer = (state = initialState, action) => {
         case SET_SHOPS_WITH_PRODUCTS:
             return {
                 ...state,
-                data: action.data
+                ShopsList: action.data
             }
         default:
             return state

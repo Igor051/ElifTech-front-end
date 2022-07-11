@@ -1,17 +1,24 @@
 import React from "react";
+import style from "./header.module.css"
+import { useLocation } from 'react-router-dom'
+import classNames from "classnames";
 
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const Header = () => {
+    const location = useLocation();
+    let shopsStyle = classNames({[style.active]: location.pathname.includes("/shops")})
+    let cartStyle = classNames({[style.active]: location.pathname.includes("/cart")})
+
     return (
-        <header>
-            <nav>
+        <header className={style.header}>
+            <nav className={style.headerNavMenu}>
                 <ul>
-                    <li>
-                        <Link to="/shops">Shops</Link>
+                    <li className={style.verticalLineRight}>
+                        <NavLink className={shopsStyle} to="/shops">Shops</NavLink>
                     </li>
                     <li>
-                        <Link to="/cart">Shopping Cart</Link>
+                        <NavLink className={cartStyle} to="/cart">Shopping Cart</NavLink>
                     </li>
                 </ul>
             </nav>

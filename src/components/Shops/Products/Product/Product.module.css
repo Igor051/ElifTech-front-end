@@ -1,0 +1,47 @@
+.productBlock {
+    width: 340px;
+    height: 290px;
+    margin-top: 60px;
+    border: 2px solid black;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 12px;
+    background-color: #f6b319;
+}
+
+.productBlock img{
+    width: 312px;
+    height: 200px;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.productBlock span {
+    float: left;
+    margin-top: 6px;
+}
+
+.productBlock button {
+    float: right;
+    clear: both;
+    background-color: white;
+    width: 110px;
+    height: 27px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.productBlock button{
+ box-shadow: 2px 2px 3px black;
+}
+
+.productBlock button:hover{
+    background-color: rgba(0,0,0,0.16);
+    cursor: pointer;
+    box-shadow: 2px 2px 1px  black;
+}
+
+.productBlock button:active {
+    box-shadow:0 0 black;
+}

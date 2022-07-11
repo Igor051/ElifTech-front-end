@@ -3,10 +3,12 @@ import thunkMiddleware from "redux-thunk"
 
 
 import shopsReducer from "./reducers/shopsReducer"
+import certReducer from "./reducers/cartReducer";
 
 
 let reducers = combineReducers({
-    shopsPage: shopsReducer
+    shopsPage: shopsReducer,
+    cartPage: certReducer
 });
 
 let store = createStore(reducers,  applyMiddleware(thunkMiddleware));
