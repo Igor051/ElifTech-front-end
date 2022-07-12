@@ -39,7 +39,6 @@ export const getShopsWithProducts = () => async (dispatch) => {
 }
 
 export const setActiveShopId = (shop_id) => async (dispatch) => {
-    console.log(shop_id);
     dispatch(setActiveShopAC(shop_id))
 }
 

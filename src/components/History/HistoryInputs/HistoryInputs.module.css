@@ -1,0 +1,56 @@
+.historyInputs {
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 8px;
+    height: 290px;
+    background-color: #f6b319;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+}
+
+.formBtnContainer {
+    width: 456px;
+    margin: auto;
+}
+
+.form {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form label {
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 6px;
+}
+
+.form input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 30px;
+    font-size: 1.2em;
+    border-radius: 8px;
+}
+
+.historyFromSubmit {
+    background-color: white;
+    width: 200px;
+    height: 40px;
+    box-sizing: border-box;
+    margin: 40px auto 0 auto;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 2px 2px 3px black;
+    display: block;
+}
+
+.historyFromSubmit:hover {
+    background-color: rgba(0,0,0,0.16);
+    cursor: pointer;
+    box-shadow: 2px 2px 1px  black;
+}
+
+.historyFromSubmit:active {
+    box-shadow:0 0 black;
+}

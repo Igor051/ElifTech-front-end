@@ -4,11 +4,13 @@ import thunkMiddleware from "redux-thunk"
 
 import shopsReducer from "./reducers/shopsReducer"
 import certReducer from "./reducers/cartReducer";
+import historyReducer from "./reducers/historyReducer";
 
 
 let reducers = combineReducers({
     shopsPage: shopsReducer,
-    cartPage: certReducer
+    cartPage: certReducer,
+    historyPage: historyReducer
 });
 
 function saveCartToLocalStorage(state) {

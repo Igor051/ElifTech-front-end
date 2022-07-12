@@ -12,6 +12,7 @@ import {
 import Header from "./components/Header/Header";
 import Shops from "./components/Shops/Shops"
 import Cart from "./components/Cart/CartPage"
+import History from "./components/History/History";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                   <Routes>
                       <Route path="/shops/*" element={<Shops/>}/>
                       <Route path="/cart" element={<Cart/>}/>
+                      <Route path="/history" element={<History/>}/>
                   </Routes>
 
               </div>
