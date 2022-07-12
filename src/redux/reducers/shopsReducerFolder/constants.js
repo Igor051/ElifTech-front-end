@@ -1,0 +1,3 @@
+export const SET_SHOPS_WITH_PRODUCTS = "shopsReducer/SET_SHOPS_WITH_PRODUCTS"
+export const SET_ACTIVE_SHOP_ID = "shopsReducer/SET_ACTIVE_SHOP_ID"
+export const ACTIVE_SHOP_ID_TO_UNDEFINED = "shopsReducer/ACTIVE_SHOP_ID_TO_UNDEFINED"

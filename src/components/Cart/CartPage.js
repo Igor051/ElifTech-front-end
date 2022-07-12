@@ -11,7 +11,7 @@ import {
     submitCartForm
 } from "../../redux/reducers/cartReducer"
 
-const CartPage = ({cart, changeProductAmount, changeInputValue, submitCartForm}) => {
+const CartPage = ({cart, changeProductAmount, changeInputValue, submitCartForm, productListLength}) => {
     let totalPrice  = 0
     cart.products.forEach((product)=>{
         totalPrice += product.price_per_unit * product.count
@@ -22,18 +22,9 @@ const CartPage = ({cart, changeProductAmount, changeInputValue, submitCartForm})
             <div className={style.cartPageContent}>
                 <div className={style.formContainer}>
                     <CartForm submitCartForm={submitCartForm} changeInputValue={changeInputValue} email={cart.email} name={cart.name} phone={cart.phone} address={cart.address}/>
-                    {/*<form action="" name="cartForm" id='cart/form'>*/}
-                    {/*    <label htmlFor="cart/name">Name: </label>*/}
-                    {/*    <input type="text" id="cart/name" name="name"/>*/}
-                    {/*    <label htmlFor="cart/email">Email: </label>*/}
-                    {/*    <input type="email" id="cart/email" name="email"/>*/}
-                    {/*    <label htmlFor="cart/phone">Phone: </label>*/}
-                    {/*    <input type="tel" id="cart/phone" name="phone"/>*/}
-                    {/*    <label htmlFor="cart/address">Address: </label>*/}
-                    {/*    <input type="text" id="cart/address" name="address"/>*/}
-                    {/*</form>*/}
+
                 </div>
-           <ProductList products={cart.products} changeProductAmount={changeProductAmount}/>
+           <ProductList productListLength={productListLength} products={cart.products} changeProductAmount={changeProductAmount}/>
             </div>
 
             <div className={style.buttonContainer}>
@@ -46,7 +37,8 @@ const CartPage = ({cart, changeProductAmount, changeInputValue, submitCartForm})
 }
 
 let mapStateToProps = (state) => ({
-    cart: state.cartPage.cart
+    cart: state.cartPage.cart,
+    productListLength: state.cartPage.productListLength
 });
 
 export default compose(connect(mapStateToProps, {submitCartForm, changeInputValue, changeProductAmount, removeProductCart}))(CartPage)

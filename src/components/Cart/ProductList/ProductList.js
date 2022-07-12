@@ -2,10 +2,10 @@ import React from "react";
 import style from "./ProductList.module.css";
 import ProductCart from "./ProductCart"
 
-const ProductList = ({products, changeProductAmount}) =>{
+const ProductList = ({products, changeProductAmount, productListLength}) =>{
     let ProductList = products.map((product)=>{
         return (
-            <ProductCart  key={product.product_id} product={product} changeProductAmount={changeProductAmount}/>
+            <ProductCart productListLength={productListLength}  key={product.product_id} product={product} changeProductAmount={changeProductAmount}/>
         )
     })
 

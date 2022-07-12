@@ -1,26 +1,27 @@
 import {logDOM} from "@testing-library/react";
 import {API} from "../../api/cartAPI"
+import {activeShopIdToUndefinedAC} from "./shopsReducerFolder/AC"
 
-const ADD_NEW_PRODUCT = "cartReducer/ADD_PRODUCT"
-const INCREASE_PRODUCT_COUNT = "cartReducer/INCREASE_PRODUCT_COUNT"
-const CHANGE_PRODUCT_AMOUNT = "cartReducer/CHANGE_PRODUCT_AMOUNT"
-const REMOVE_PRODUCT_CART = "cartReducer/REMOVE_PRODUCT_CART"
-const CHANGE_INPUT_NAME_VALUE = "cartReducer/CHANGE_INPUT_NAME_VALUE"
-const CHANGE_INPUT_PHONE_VALUE = "cartReducer/CHANGE_INPUT_PHONE_VALUE"
-const CHANGE_INPUT_EMAIL_VALUE = "cartReducer/CHANGE_INPUT_EMAIL_VALUE"
-const CHANGE_INPUT_ADDRESS_VALUE = "cartReducer/CHANGE_INPUT_ADDRESS_VALUE"
-const SUBMIT_CART_FORM = "cartReducer/SUBMIT_CART_FORM"
+import {
+    CHANGE_INPUT_ADDRESS_VALUE, CHANGE_INPUT_EMAIL_VALUE,
+    CHANGE_INPUT_PHONE_VALUE, CHANGE_INPUT_NAME_VALUE,
+    CHANGE_PRODUCT_AMOUNT, ADD_NEW_PRODUCT,
+    INCREASE_PRODUCT_COUNT, REMOVE_PRODUCT_CART,
+    SUBMIT_CART_FORM
+} from "./cartReducerFolder/constants"
 
-let initialState = {
-    cart: {
-        name: "",
-        email: "",
-        phone: "",
-        address: "",
-        products: []
+import {
+    submitCartFormAC, removeProductCartAC, addNewProductAC,
+    changeInputAddressValueAC, changeInputEmailValueAC,
+    changeInputNameValueAC, changeInputPhoneValueAC, increaseProductCountAC,
+    changeProductAmountAC
+} from "./cartReducerFolder/AC"
 
-    }
-}
+// load string from localStorage and convert into an Object
+import {loadFromLocalStorageCartReducer as loadFromLocalStorage}
+    from "./cartReducerFolder/loadFromLocalStorage"
+
+let initialState = loadFromLocalStorage()
 
 const certReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -35,7 +36,6 @@ const certReducer = (state = initialState, action) => {
                         return product
                     })
                 }
-
             }
         case ADD_NEW_PRODUCT:
             return {
@@ -59,7 +59,7 @@ const certReducer = (state = initialState, action) => {
                 return product.product_id !== action.product_id
             })
 
-            return {...state, cart: {...state.cart, products: answer}}
+            return {...state, cart: {...state.cart, products: answer}, productListLength: state.productListLength - 1}
         case CHANGE_INPUT_NAME_VALUE:
             return {
                 ...state,
@@ -83,60 +83,13 @@ const certReducer = (state = initialState, action) => {
         case SUBMIT_CART_FORM:
             return {
                 ...state,
-                cart: {...initialState.cart, products: []},
+                cart: {email: '', name: '', address: '', phone: ' ', products: []},
                 productListLength: 0
             }
         default:
             return state
     }
 }
-
-const addNewProductAC = (product) => ({
-    type: ADD_NEW_PRODUCT,
-    product
-})
-
-const increaseProductCountAC = (product_id) => ({
-    type: INCREASE_PRODUCT_COUNT,
-    product_id
-})
-
-const changeProductAmountAC = (count, product_id) => ({
-    type: CHANGE_PRODUCT_AMOUNT,
-    count,
-    product_id
-})
-
-const removeProductCartAC = (product_id) => ({
-    type: REMOVE_PRODUCT_CART,
-    product_id
-})
-
-const changeInputNameValueAC = (inputValue) => (
-    {
-        type: CHANGE_INPUT_NAME_VALUE,
-        inputValue
-    }
-)
-
-const changeInputPhoneValueAC = (inputValue) => ({
-    type: CHANGE_INPUT_PHONE_VALUE,
-    inputValue
-})
-
-const changeInputEmailValueAC = (inputValue) => ({
-    type: CHANGE_INPUT_EMAIL_VALUE,
-    inputValue
-})
-
-const changeInputAddressValueAC = (inputValue) => ({
-    type: CHANGE_INPUT_ADDRESS_VALUE,
-    inputValue
-})
-
-const submitCartFormAC = () => ({
-    type: SUBMIT_CART_FORM
-})
 
 export const removeProductCart = (product_id) => async (dispatch) => {
     dispatch(removeProductCartAC(product_id))
@@ -145,7 +98,6 @@ export const removeProductCart = (product_id) => async (dispatch) => {
 export const changeProductAmount = (count, product_id) => async (dispatch) => {
     dispatch(changeProductAmountAC(count, product_id))
 }
-
 
 export const changeInputValue = (inputKey, inputValue) => (dispatch) => {
     switch (inputKey) {
@@ -162,7 +114,6 @@ export const changeInputValue = (inputKey, inputValue) => (dispatch) => {
             dispatch(changeInputAddressValueAC(inputValue))
             break;
     }
-
 }
 
 export const addProduct = (product) => async (dispatch, getState) => {
@@ -180,11 +131,11 @@ export const submitCartForm = () => async (dispatch, getState) => {
     if (order.products.length === 0) {
         alert("Your order is empty")
     } else {
-
         try {
+            dispatch(activeShopIdToUndefinedAC())
             let orderToSend = {
                 ...order, products: order.products.map((product) => {
-                    let {image, ...rest } = product
+                    let {image, ...rest} = product
                     return rest
                 })
             }
@@ -194,7 +145,6 @@ export const submitCartForm = () => async (dispatch, getState) => {
             alert(e.message)
             dispatch(submitCartFormAC())
         }
-
     }
 }
 

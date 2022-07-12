@@ -2,8 +2,15 @@ import React from "react";
 import Product from "./Product/Product";
 
 import "./products.css"
+import {Navigate} from "react-router";
 
-const ProductsList = ({products, shop_name}) => {
+const ProductsList = ({products, shop_name, activeShopId}) => {
+    if(activeShopId && products.length > 0 && products[0].shop_id !== activeShopId){
+        return (
+            <Navigate to="/shops" replace />
+        )
+    }
+
     let mappedProducts = null
     if(products){
         mappedProducts = products.map((product)=>{
