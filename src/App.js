@@ -13,6 +13,7 @@ import Header from "./components/Header/Header";
 import Shops from "./components/Shops/Shops"
 import Cart from "./components/Cart/CartPage"
 import History from "./components/History/History";
+import HomePage from "./components/HomePage/HomePage"
 
 function App() {
   return (
@@ -28,11 +29,11 @@ function App() {
                   <Header/>
 
                   <Routes>
+                      <Route  path="/" element={<HomePage/>}/>
                       <Route path="/shops/*" element={<Shops/>}/>
                       <Route path="/cart" element={<Cart/>}/>
                       <Route path="/history" element={<History/>}/>
                   </Routes>
-
               </div>
           </div>
       </Router>

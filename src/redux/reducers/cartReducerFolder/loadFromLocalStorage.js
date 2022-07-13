@@ -11,12 +11,13 @@ export function loadFromLocalStorageCartReducer() { // load string from localSto
                     products: []
 
                 },
-                productListLength: 0
+                productListLength: 0,
+                disableSubmitBtn: false
             }
         }
         return JSON.parse(serialisedState);
     } catch (e) {
-        console.warn(e);
+        console.warn(e.message);
         return {
             cart: {
                 name: "",
@@ -26,7 +27,8 @@ export function loadFromLocalStorageCartReducer() { // load string from localSto
                 products: []
 
             },
-            productListLength: 0
+            productListLength: 0,
+            disableSubmitBtn: false
         }
     }
 }

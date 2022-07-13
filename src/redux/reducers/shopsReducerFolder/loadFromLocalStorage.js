@@ -6,7 +6,7 @@ export function loadFromLocalStorageShopsPage() {
         }
         return JSON.parse(serialisedState);
     }catch (e) {
-        console.warn(e);
+        console.warn(e.message);
         return undefined
     }
 }

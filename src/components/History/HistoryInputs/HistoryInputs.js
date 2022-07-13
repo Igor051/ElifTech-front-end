@@ -19,7 +19,7 @@ const HistoryInputs = ({getOrdersByEmailPhone}) => {
                         <label htmlFor="history_order_email">Email: </label>
                         <Field required type="email" id="history_order_email" name="history_email"/>
                         <label htmlFor="history_order_phone">Phone: </label>
-                        <Field required type="tel" id="history_order_phone" name="history_phone"/>
+                        <Field required type="tel" pattern="(\s(\d{10}|\d{12}))|(\d{10}|\d{12})" id="history_order_phone" name="history_phone"/>
                     </Form>
                 </Formik>
 

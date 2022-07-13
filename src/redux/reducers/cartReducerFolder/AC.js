@@ -3,7 +3,7 @@ import {
     CHANGE_INPUT_NAME_VALUE, CHANGE_INPUT_PHONE_VALUE,
     CHANGE_PRODUCT_AMOUNT,
     INCREASE_PRODUCT_COUNT,
-    REMOVE_PRODUCT_CART, SUBMIT_CART_FORM
+    REMOVE_PRODUCT_CART, SUBMIT_CART_FORM, DISABLE_SUBMIT_BTN
 } from "./constants";
 
 export const addNewProductAC = (product) => ({
@@ -50,4 +50,9 @@ export const changeInputAddressValueAC = (inputValue) => ({
 
 export const submitCartFormAC = () => ({
     type: SUBMIT_CART_FORM
+})
+
+export const disableSubmitBtnAC = (bool) => ({
+    type: DISABLE_SUBMIT_BTN,
+    bool
 })

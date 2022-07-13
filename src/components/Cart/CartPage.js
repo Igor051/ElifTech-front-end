@@ -11,9 +11,12 @@ import {
     submitCartForm
 } from "../../redux/reducers/cartReducer"
 
-const CartPage = ({cart, changeProductAmount, changeInputValue, submitCartForm, productListLength}) => {
-    let totalPrice  = 0
-    cart.products.forEach((product)=>{
+const CartPage = ({
+                      cart, changeProductAmount, changeInputValue,
+                      submitCartForm, productListLength, disableSubmitBtn
+                  }) => {
+    let totalPrice = 0
+    cart.products.forEach((product) => {
         totalPrice += product.price_per_unit * product.count
     })
 
@@ -21,15 +24,17 @@ const CartPage = ({cart, changeProductAmount, changeInputValue, submitCartForm, 
         <div className={style.cartPage}>
             <div className={style.cartPageContent}>
                 <div className={style.formContainer}>
-                    <CartForm submitCartForm={submitCartForm} changeInputValue={changeInputValue} email={cart.email} name={cart.name} phone={cart.phone} address={cart.address}/>
+                    <CartForm submitCartForm={submitCartForm} changeInputValue={changeInputValue} email={cart.email}
+                              name={cart.name} phone={cart.phone} address={cart.address}/>
 
                 </div>
-           <ProductList productListLength={productListLength} products={cart.products} changeProductAmount={changeProductAmount}/>
+                <ProductList productListLength={productListLength} products={cart.products}
+                             changeProductAmount={changeProductAmount}/>
             </div>
 
             <div className={style.buttonContainer}>
                 <span>Total price: {totalPrice}</span>
-               <button type="submit" form="cart_form">Submit</button>
+                <button disabled={disableSubmitBtn} type="submit" form="cart_form">Submit</button>
             </div>
         </div>
 
@@ -38,7 +43,13 @@ const CartPage = ({cart, changeProductAmount, changeInputValue, submitCartForm, 
 
 let mapStateToProps = (state) => ({
     cart: state.cartPage.cart,
-    productListLength: state.cartPage.productListLength
+    productListLength: state.cartPage.productListLength,
+    disableSubmitBtn: state.cartPage.disableSubmitBtn
 });
 
-export default compose(connect(mapStateToProps, {submitCartForm, changeInputValue, changeProductAmount, removeProductCart}))(CartPage)
+export default compose(connect(mapStateToProps, {
+    submitCartForm,
+    changeInputValue,
+    changeProductAmount,
+    removeProductCart
+}))(CartPage)

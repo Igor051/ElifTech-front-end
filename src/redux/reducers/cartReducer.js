@@ -7,14 +7,14 @@ import {
     CHANGE_INPUT_PHONE_VALUE, CHANGE_INPUT_NAME_VALUE,
     CHANGE_PRODUCT_AMOUNT, ADD_NEW_PRODUCT,
     INCREASE_PRODUCT_COUNT, REMOVE_PRODUCT_CART,
-    SUBMIT_CART_FORM
+    SUBMIT_CART_FORM, DISABLE_SUBMIT_BTN
 } from "./cartReducerFolder/constants"
 
 import {
     submitCartFormAC, removeProductCartAC, addNewProductAC,
     changeInputAddressValueAC, changeInputEmailValueAC,
     changeInputNameValueAC, changeInputPhoneValueAC, increaseProductCountAC,
-    changeProductAmountAC
+    changeProductAmountAC, disableSubmitBtnAC
 } from "./cartReducerFolder/AC"
 
 // load string from localStorage and convert into an Object
@@ -86,10 +86,16 @@ const certReducer = (state = initialState, action) => {
                 cart: {email: '', name: '', address: '', phone: ' ', products: []},
                 productListLength: 0
             }
+        case DISABLE_SUBMIT_BTN:
+            return {
+                ...state,
+                disableSubmitBtn: action.bool
+            }
         default:
             return state
     }
 }
+
 
 export const removeProductCart = (product_id) => async (dispatch) => {
     dispatch(removeProductCartAC(product_id))
@@ -132,6 +138,7 @@ export const submitCartForm = () => async (dispatch, getState) => {
         alert("Your order is empty")
     } else {
         try {
+            dispatch(disableSubmitBtnAC(true))
             dispatch(activeShopIdToUndefinedAC())
             let orderToSend = {
                 ...order, products: order.products.map((product) => {
@@ -141,9 +148,11 @@ export const submitCartForm = () => async (dispatch, getState) => {
             }
             await API.submitOrder(orderToSend)
             dispatch(submitCartFormAC())
+            dispatch(disableSubmitBtnAC(false))
         } catch (e) {
             alert(e.message)
             dispatch(submitCartFormAC())
+            dispatch(disableSubmitBtnAC(false))
         }
     }
 }
