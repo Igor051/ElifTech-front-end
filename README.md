@@ -7,8 +7,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [comment]: <> (## Available Scripts)
 
-To run the project you can use: 
 
+
+To run the project you need to install the dependencies using
+
+### `npm i` 
+command.\
+To run the project use 
 ### `npm start`
 command.
 
