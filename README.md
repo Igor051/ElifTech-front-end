@@ -1,5 +1,8 @@
 [comment]: <> (# Getting Started with Create React App)
 ###This is the repository for the front-end part of the project
+
+####I implemented all the points of the middle level + history page
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 [comment]: <> (## Available Scripts)
