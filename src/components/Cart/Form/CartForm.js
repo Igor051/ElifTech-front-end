@@ -27,7 +27,7 @@ const CartForm = ({email, phone, name, address, changeInputValue, submitCartForm
                 <label className={style.label} htmlFor="cart_email">Email: </label>
                 <Field required  onChange={onInputChange}  value={email} className={style.field} type="email" id="cart_email" name="email"/>
                 <label className={style.label} htmlFor="cart_phone">Phone: </label>
-                <Field required onChange={onInputChange} value={phone} className={style.field} type="tel" pattern="(\s(\d{10}|\d{12}))|(\d{10}|\d{12})" id="cart_phone" name="phone"/>
+                <Field required onChange={onInputChange} value={phone} className={style.field} type="tel" pattern="(\s(\d{10}|\d{12}))[\s]*|(\d{10}|\d{12})[\s]*" id="cart_phone" name="phone"/>
                 <label className={style.label} htmlFor="cart_address">Address: </label>
                 <Field required onChange={onInputChange} value={address} className={style.field} type="text" id="cart_address" name="address"/>
             </Form>
