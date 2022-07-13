@@ -1,7 +1,7 @@
 [comment]: <> (# Getting Started with Create React App)
-###This is the repository for the front-end part of the project
+### This is the repository for the front-end part of the project
 
-####I implemented all the points of the middle level + history page
+#### I implemented all the points of the middle level + history page
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -16,10 +16,10 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 
-###Front-end part of the project was deployed at
+### Front-end part of the project was deployed at
 [https://eliftech-front-end.herokuapp.com/](https://eliftech-front-end.herokuapp.com/)
 
-###Back-end part of the project was uploaded here
+### Back-end part of the project was uploaded here
 [https://github.com/Igor051/ElifTech-back-end](https://github.com/Igor051/ElifTech-back-end)
 
 It was created using Node.js and express. \
